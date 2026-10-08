@@ -3,9 +3,13 @@ import {
   Text,
   StyleSheet,
   Image,
+  TouchableOpacity,
 } from "react-native";
 
+import { useState } from "react";
+
 export default function App() {
+  const [points, setPoints] = useState(0);
   return (
     <View style={styles.container}>
 
@@ -42,15 +46,23 @@ export default function App() {
           <Text style={styles.value}>Anushka@gmail.com</Text>
         </View>
 
+
         
         <Text style={styles.label}>Points</Text>
 
         <View style={styles.row}>
           <Text style={styles.star}>★</Text>
-          <Text style={styles.value}>0</Text>
+          <Text style={styles.value}>{points}</Text>
         </View>
 
       </View>
+      <TouchableOpacity
+  style={styles.floatingButton}
+  onPress={() => setPoints(points + 1)}
+>
+  <Text style={styles.plus}>+</Text>
+</TouchableOpacity>
+
 
     </View>
   );
@@ -151,4 +163,23 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginRight: 7,
   },
+    floatingButton: {
+    position: "absolute",
+    right: 20,
+    bottom: 20,
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    backgroundColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+    elevation: 5,
+  },
+
+  plus: {
+    color: "white",
+    fontSize: 28,
+    fontWeight: "300",
+  },
+
 });
